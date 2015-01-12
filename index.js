@@ -33,6 +33,7 @@ SourceMapInliner.prototype.updateCache = function(srcDir, destDir) {
 			var srcPath = path.join(srcDir, relativePath);
 			var destPath = path.join(destDir, relativePath);
 			var srcCode = fs.readFileSync(srcPath, {encoding: 'utf-8'});
+			srcDir = path.dirname(srcPath);
 			var smap = convert.fromMapFileSource(srcCode, srcDir);
 			if (smap !== null && typeof smap['sourcemap'] !== 'undefined') {
 				if (typeof smap.getProperty('sourcesContent') === 'undefined' && typeof smap.getProperty('sources') !== 'undefined') {
